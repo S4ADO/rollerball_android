@@ -1,0 +1,89 @@
+Mono path[0] = 'D:/Unity/Projects/rollerball-master/Builds/Build_Data/Managed'
+Mono path[1] = 'D:/Unity/Projects/rollerball-master/Builds/Build_Data/Mono'
+Mono config path = 'D:/Unity/Projects/rollerball-master/Builds/Build_Data/Mono/etc'
+PlayerConnection initialized from D:/Unity/Projects/rollerball-master/Builds/Build_Data (debug = 0)
+PlayerConnection initialized network socket : 0.0.0.0 55478
+Multi-casting "[IP] 192.168.1.92 [Port] 55478 [Flags] 3 [Guid] 1028404271 [EditorId] 2003033367 [Version] 1048832 [Id] WindowsPlayer(AORUS_X7) [Debug] 1" to [225.0.0.222:54997]...
+Waiting for connection from host on [192.168.1.92:55478]...
+Timed out. Continuing without host connection.
+Using monoOptions --debugger-agent=transport=dt_socket,embedding=1,defer=y,address=0.0.0.0:56271
+PlayerConnection already initialized - listening to [192.168.1.92:55478]
+Initialize engine version: 5.4.1f1 (649f48bbbf0f)
+GfxDevice: creating device client; threaded=1
+Direct3D:
+    Version:  Direct3D 11.0 [level 11.0]
+    Renderer: NVIDIA GeForce GTX 860M (ID=0x119a)
+    Vendor:   NVIDIA
+    VRAM:     3072 MB
+Begin MonoManager ReloadAssembly
+Platform assembly: D:\Unity\Projects\rollerball-master\Builds\Build_Data\Managed\UnityEngine.dll (this message is harmless)
+Loading D:\Unity\Projects\rollerball-master\Builds\Build_Data\Managed\UnityEngine.dll into Unity Child Domain
+Platform assembly: D:\Unity\Projects\rollerball-master\Builds\Build_Data\Managed\Assembly-CSharp-firstpass.dll (this message is harmless)
+Loading D:\Unity\Projects\rollerball-master\Builds\Build_Data\Managed\Assembly-CSharp-firstpass.dll into Unity Child Domain
+Platform assembly: D:\Unity\Projects\rollerball-master\Builds\Build_Data\Managed\Assembly-CSharp.dll (this message is harmless)
+Loading D:\Unity\Projects\rollerball-master\Builds\Build_Data\Managed\Assembly-CSharp.dll into Unity Child Domain
+Platform assembly: D:\Unity\Projects\rollerball-master\Builds\Build_Data\Managed\UnityEngine.UI.dll (this message is harmless)
+Loading D:\Unity\Projects\rollerball-master\Builds\Build_Data\Managed\UnityEngine.UI.dll into Unity Child Domain
+Platform assembly: D:\Unity\Projects\rollerball-master\Builds\Build_Data\Managed\UnityEngine.Networking.dll (this message is harmless)
+Loading D:\Unity\Projects\rollerball-master\Builds\Build_Data\Managed\UnityEngine.Networking.dll into Unity Child Domain
+- Completed reload, in  0.042 seconds
+Platform assembly: D:\Unity\Projects\rollerball-master\Builds\Build_Data\Managed\System.Core.dll (this message is harmless)
+Platform assembly: D:\Unity\Projects\rollerball-master\Builds\Build_Data\Managed\System.dll (this message is harmless)
+desktop: 1920x1080 60Hz; virtual: 1920x1080 at 0,0
+<RI> Initializing input.
+<RI> Input initialized.
+<RI> Initialized touch support.
+The referenced script on this Behaviour (Game Object 'RegisterCanvas') is missing!
+ 
+(Filename: C:/buildslave/unity/build/Runtime/Mono/MonoBehaviour.cpp Line: 1656)
+
+UnloadTime: 0.723591 ms
+DontDestroyOnLoad only work for root GameObjects or components on root GameObjects.
+UnityEngine.Object:DontDestroyOnLoad(Object)
+Login:Awake() (at D:\Unity\Projects\rollerball-master\Assets\Scripts\Networking\Login.cs:17)
+
+[C:/buildslave/unity/build/Runtime/SceneManager/SceneManager.cpp line 386] 
+(Filename: D:/Unity/Projects/rollerball-master/Assets/Scripts/Networking/Login.cs Line: 17)
+
+DontDestroyOnLoad only work for root GameObjects or components on root GameObjects.
+UnityEngine.Object:DontDestroyOnLoad(Object)
+Login:Awake() (at D:\Unity\Projects\rollerball-master\Assets\Scripts\Networking\Login.cs:17)
+
+[C:/buildslave/unity/build/Runtime/SceneManager/SceneManager.cpp line 386] 
+(Filename: D:/Unity/Projects/rollerball-master/Assets/Scripts/Networking/Login.cs Line: 17)
+
+Setting up 2 worker threads for Enlighten.
+  Thread -> id: 2f98 -> priority: 1 
+  Thread -> id: 1f50 -> priority: 1 
+The referenced script on this Behaviour (Game Object 'NavigateMainScreen') is missing!
+ 
+(Filename: C:/buildslave/unity/build/Runtime/Mono/MonoBehaviour.cpp Line: 1656)
+
+Unloading 5 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 3.362219 ms
+System memory in use before: 17.5 MB.
+System memory in use after: 17.4 MB.
+
+Unloading 8 unused Assets to reduce memory usage. Loaded Objects now: 307.
+Total: 0.283534 ms (FindLiveObjects: 0.031646 ms CreateObjectMapping: 0.015395 ms MarkObjects: 0.223663 ms  DeleteObjects: 0.011119 ms)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.576478 ms
+System memory in use before: 17.4 MB.
+System memory in use after: 17.4 MB.
+
+Unloading 5 unused Assets to reduce memory usage. Loaded Objects now: 342.
+Total: 0.289949 ms (FindLiveObjects: 0.022665 ms CreateObjectMapping: 0.011974 ms MarkObjects: 0.237348 ms  DeleteObjects: 0.017533 ms)
+
+The referenced script on this Behaviour (Game Object 'NavigateMainScreen') is missing!
+ 
+(Filename: C:/buildslave/unity/build/Runtime/Mono/MonoBehaviour.cpp Line: 1656)
+
+Unloading 4 Unused Serialized files (Serialized files now loaded: 0)
+UnloadTime: 0.647041 ms
+System memory in use before: 17.4 MB.
+System memory in use after: 17.4 MB.
+
+Unloading 17 unused Assets to reduce memory usage. Loaded Objects now: 307.
+Total: 0.280969 ms (FindLiveObjects: 0.022665 ms CreateObjectMapping: 0.011546 ms MarkObjects: 0.229222 ms  DeleteObjects: 0.016678 ms)
+
