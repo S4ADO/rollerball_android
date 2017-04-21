@@ -5,6 +5,7 @@ public class Rotator : MonoBehaviour
 {
 	public bool isActive;
 	public bool isOriginal;
+	public bool touched = false;
 
 	public void deactivate()
 	{

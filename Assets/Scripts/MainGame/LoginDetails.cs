@@ -4,20 +4,12 @@ using System.Collections;
 public class LoginDetails : MonoBehaviour {
 
 	public static string email, password, emailHash, username;
-    public static int magnet, doubleJump, invincibility, increasedCoinValue, barracade, highScore, money;
 
 	void Awake()
 	{
 		DontDestroyOnLoad(this);
 		Screen.orientation = ScreenOrientation.Landscape;
+		if(PlayerPrefs.GetInt("balance", 0) < 10)
+			PlayerPrefs.SetInt("balance", 500000);
 	}
-
-    public static void setEffects()
-    {
-        magnet = 2;
-        doubleJump = 2;
-        invincibility = 2;
-        increasedCoinValue = 2;
-        barracade = 2;
-    }
 }

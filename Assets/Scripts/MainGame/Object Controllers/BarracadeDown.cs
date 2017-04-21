@@ -5,10 +5,12 @@ public class BarracadeDown : MonoBehaviour {
 
 	public GameObject barr1, barr2;
 	private PlayerController player;
+	private Transform groundTransform;
 
 	void Start()
 	{
 		player = GameObject.Find("Player").GetComponent<PlayerController>();
+		groundTransform = GameObject.Find("Ground").GetComponent<Transform>();
 	}
 	
 	void Update () {
@@ -17,5 +19,10 @@ public class BarracadeDown : MonoBehaviour {
 			barr1.transform.Translate(new Vector3(0, -1f, 0) * Time.deltaTime);
 			barr2.transform.Translate(new Vector3(0, -1f, 0) * Time.deltaTime);
 		}
+	}
+
+	void LateUpdate()
+	{
+		transform.position = new Vector3(transform.position.x, transform.position.y, groundTransform.position.z);
 	}
 }

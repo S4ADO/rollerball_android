@@ -17,17 +17,29 @@ public class Magnet : Effects {
 	void FixedUpdate ()
     {
         Collider[] hitColliders = Physics.OverlapSphere(player.transform.position, 7f);
+		Rotator[] touchedCoins = FindObjectsOfType<Rotator>();
         foreach (Collider coin in hitColliders)
         {
             if (coin.CompareTag("Pick Up"))
             {
                 Vector3 magnetField = player.transform.position - coin.transform.position;
-                float index = (20 - magnetField.magnitude) / 20;
 				if (coin.GetComponent<Rigidbody>() != null)
 				{
-					coin.GetComponent<Rigidbody>().AddForce(25 * magnetField * index);
+					coin.GetComponent<Rigidbody>().velocity = 40 * magnetField.normalized;
 				}
-            }
+				coin.GetComponent<Rotator>().touched = true;
+			}
         }
+		foreach(Rotator coin in touchedCoins)
+		{
+			if (coin.touched)
+			{
+				Vector3 magnetField = player.transform.position - coin.transform.position;
+				if (coin.GetComponent<Rigidbody>() != null)
+				{
+					coin.GetComponent<Rigidbody>().velocity = 40 * magnetField.normalized;
+				}
+			}
+		}
     }
 }

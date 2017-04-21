@@ -92,49 +92,16 @@ public class PlayerController : MonoBehaviour
 
 		//jump();
 		checkJump();
-
-		#region effect
-		if (Input.GetKeyUp(KeyCode.Q) && PlayerPrefs.GetInt("doublejump", 0) > 0 && GetComponent<DoubleJump>() == null)
-		{
-			gameObject.AddComponent<DoubleJump>();
-			PlayerPrefs.SetInt("doublejump", (PlayerPrefs.GetInt("doublejump")-1));
-			//StartCoroutine("decrementFromTheDatabase", "doubleJump");
-		}
-		if (Input.GetKeyUp(KeyCode.W) && PlayerPrefs.GetInt("barracades", 0) > 0  && GetComponent<Barracades>() == null)
-		{
-			gameObject.AddComponent<Barracades>();
-			PlayerPrefs.SetInt("barracades", (PlayerPrefs.GetInt("barracades") - 1));
-			//StartCoroutine("decrementFromTheDatabase", "barracade");
-		}
-		if (Input.GetKeyUp(KeyCode.E) && PlayerPrefs.GetInt("magnet", 0) > 0 && GetComponent<Magnet>() == null)
-		{
-			gameObject.AddComponent<Magnet>();
-			PlayerPrefs.SetInt("magnet", (PlayerPrefs.GetInt("magnet") - 1));
-			//StartCoroutine("decrementFromTheDatabase", "magnet");
-		}
-		if (Input.GetKeyUp(KeyCode.R) && PlayerPrefs.GetInt("invincibility", 0) > 0 && GetComponent<Invincibility>() == null)
-		{
-			gameObject.AddComponent<Invincibility>();
-			PlayerPrefs.SetInt("invincibility", (PlayerPrefs.GetInt("invincibility") - 1));
-			//StartCoroutine("decrementFromTheDatabase", "invincibility");
-		}
-		if (Input.GetKeyUp(KeyCode.T) && PlayerPrefs.GetInt("increasedcoinvalue", 0) > 0 && GetComponent<increasedCoinValue>() == null)
-		{
-			gameObject.AddComponent<increasedCoinValue>();
-			PlayerPrefs.SetInt("barracades", (PlayerPrefs.GetInt("increasedcoinvalue") - 1));
-			//StartCoroutine("decrementFromTheDatabase", "increasedCoinValue");
-		}
-		#endregion
 	}
 
 	void LateUpdate()
 	{
 		scoreTimeText.text = "Score: " + (int)timeInGame;
-		invText.text = "Invincibility: " + LoginDetails.invincibility;
-		djText.text = "Double Jump: " + LoginDetails.doubleJump;
-		brText.text = "Barracades: " + LoginDetails.barracade;
-		mgText.text = "Magnets: " + LoginDetails.magnet;
-		tcText.text = "Increased coin value: " + LoginDetails.increasedCoinValue;
+		invText.text = "Invincibility: " + PlayerPrefs.GetInt("invincibility", 0);
+		djText.text = "Double Jump: " + PlayerPrefs.GetInt("doublejump", 0);
+		brText.text = "Barracades: " + PlayerPrefs.GetInt("barracades", 0);
+		mgText.text = "Magnets: " + PlayerPrefs.GetInt("magnet", 0);
+		tcText.text = "Increased coin value: " + PlayerPrefs.GetInt("increasedcoinvalue", 0);
 	}
 
 	void FixedUpdate()
@@ -226,25 +193,57 @@ public class PlayerController : MonoBehaviour
 	}
 
 	//Jump With button
-	//void jump()
-	//{
-	//	if (Physics.Raycast(transform.position, Vector2.down, 0.5f))
-	//	{
-	//		jumpNumber = 0;
-	//	}
-	//	if ((PlayerMovement.jumpClick && Physics.Raycast(transform.position, Vector2.down, 0.5f)) ||
-	//		(PlayerMovement.jumpClick && GetComponent<DoubleJump>() != null && jumpNumber == 1))
-	//	{
-	//		{
-	//			sphere.AddForce(0, 450, 0);
-	//			jumpNumber++;
-	//			PlayerMovement.jumpClick = false;
-	//			//Invoke("fall", 0.5f);
-	//		}
-	//	}
-	//}
+	void jump()
+	{
+		if (Physics.Raycast(transform.position, Vector2.down, 0.5f))
+		{
+			jumpNumber = 0;
+		}
+		if ((PlayerMovement.jumpClick && Physics.Raycast(transform.position, Vector2.down, 0.5f)) ||
+			(PlayerMovement.jumpClick && GetComponent<DoubleJump>() != null && jumpNumber == 1))
+		{
+			{
+				sphere.AddForce(0, 450, 0);
+				jumpNumber++;
+				PlayerMovement.jumpClick = false;
+				Invoke("fall", 0.5f);
+			}
+		}
+	}
 
-	//With touch
+	public void addEffect(string effect)
+	{
+		if (effect.Equals("doublejump") && PlayerPrefs.GetInt("doublejump", 0) > 0 && GetComponent<DoubleJump>() == null)
+		{
+			gameObject.AddComponent<DoubleJump>();
+			PlayerPrefs.SetInt("doublejump", (PlayerPrefs.GetInt("doublejump") - 1));
+			//StartCoroutine("decrementFromTheDatabase", "doubleJump");
+		}
+		else if (effect.Equals("barracades") && PlayerPrefs.GetInt("barracades", 0) > 0 && GetComponent<Barracades>() == null)
+		{
+			gameObject.AddComponent<Barracades>();
+			PlayerPrefs.SetInt("barracades", (PlayerPrefs.GetInt("barracades") - 1));
+			//StartCoroutine("decrementFromTheDatabase", "barracade");
+		}
+		else if (effect.Equals("magnet") && PlayerPrefs.GetInt("magnet", 0) > 0 && GetComponent<Magnet>() == null)
+		{
+			gameObject.AddComponent<Magnet>();
+			PlayerPrefs.SetInt("magnet", (PlayerPrefs.GetInt("magnet") - 1));
+			//StartCoroutine("decrementFromTheDatabase", "magnet");
+		}
+		else if (effect.Equals("invincibility") && PlayerPrefs.GetInt("invincibility", 0) > 0 && GetComponent<Invincibility>() == null)
+		{
+			gameObject.AddComponent<Invincibility>();
+			PlayerPrefs.SetInt("invincibility", (PlayerPrefs.GetInt("invincibility") - 1));
+			//StartCoroutine("decrementFromTheDatabase", "invincibility");
+		}
+		else if (effect.Equals("increasedcoinvalue") && PlayerPrefs.GetInt("increasedcoinvalue", 0) > 0 && GetComponent<increasedCoinValue>() == null)
+		{
+			gameObject.AddComponent<increasedCoinValue>();
+			PlayerPrefs.SetInt("increasedcoinvalue", (PlayerPrefs.GetInt("increasedcoinvalue") - 1));
+			//StartCoroutine("decrementFromTheDatabase", "increasedCoinValue");
+		}
+	}
 
 	void jumpSwipeUp()
 	{
@@ -322,4 +321,5 @@ public class PlayerController : MonoBehaviour
 	//		yield return sendEffectForm;
 	//	}
 	//}
+
 }

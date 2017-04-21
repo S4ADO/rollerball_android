@@ -35,8 +35,8 @@ public class Login : MonoBehaviour
         LoginDetails.email = "None";
         LoginDetails.password = "Saad1000";
         LoginDetails.emailHash = Hash.ShaHash("Saad1000");
-        LoginDetails.setEffects();
-		LoginDetails.money = 0;
+	    // LoginDetails.setEffects();
+		//LoginDetails.money = 0;
         SceneManager.LoadScene("MainScreen");
     }
 
@@ -71,18 +71,18 @@ public class Login : MonoBehaviour
 			emailHash = Hash.hashString(email);
 			if (doLoginSplit[0].Equals(emailHash.ToString()))
 			{
-				//we've logged in
-				LoginDetails.email = this.email;
-				LoginDetails.password = this.password;
-				LoginDetails.emailHash = this.emailHash;
-				LoginDetails.money = int.Parse(doLoginSplit[2]);
-				LoginDetails.highScore = int.Parse(doLoginSplit[3]);
-				LoginDetails.username = doLoginSplit[4];
-				LoginDetails.increasedCoinValue = int.Parse(doLoginSplit[5]);
-				LoginDetails.invincibility = int.Parse(doLoginSplit[6]);
-				LoginDetails.doubleJump = int.Parse(doLoginSplit[7]);
-				LoginDetails.barracade = int.Parse(doLoginSplit[8]);
-				LoginDetails.magnet = int.Parse(doLoginSplit[9]);
+				////we've logged in
+				//LoginDetails.email = this.email;
+				//LoginDetails.password = this.password;
+				//LoginDetails.emailHash = this.emailHash;
+				//LoginDetails.money = int.Parse(doLoginSplit[2]);
+				//LoginDetails.highScore = int.Parse(doLoginSplit[3]);
+				//LoginDetails.username = doLoginSplit[4];
+				//LoginDetails.increasedCoinValue = int.Parse(doLoginSplit[5]);
+				//LoginDetails.invincibility = int.Parse(doLoginSplit[6]);
+				//LoginDetails.doubleJump = int.Parse(doLoginSplit[7]);
+				//LoginDetails.barracade = int.Parse(doLoginSplit[8]);
+				//LoginDetails.magnet = int.Parse(doLoginSplit[9]);
 				SceneManager.LoadScene("MainScreen");
 			}
 			else if (doLoginSplit[0] == "Login")
