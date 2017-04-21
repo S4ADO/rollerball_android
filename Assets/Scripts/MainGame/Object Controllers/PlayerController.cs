@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-	private const string scoreURL = "www.rollerball.x10.mx/includes/updateScore.php";
-	private const string effectURL = "www.rollerball.x10.mx/includes/effect.php";
+	//private const string scoreURL = "www.rollerball.x10.mx/includes/updateScore.php";
+	//private const string effectURL = "www.rollerball.x10.mx/includes/effect.php";
 
 	public Rigidbody sphere;
 	private Vector3 movement;
@@ -94,35 +94,35 @@ public class PlayerController : MonoBehaviour
 		checkJump();
 
 		#region effect
-		if (Input.GetKeyUp(KeyCode.Q) && LoginDetails.doubleJump > 0 && GetComponent<DoubleJump>() == null)
+		if (Input.GetKeyUp(KeyCode.Q) && PlayerPrefs.GetInt("doublejump", 0) > 0 && GetComponent<DoubleJump>() == null)
 		{
 			gameObject.AddComponent<DoubleJump>();
-			LoginDetails.doubleJump--;
-			StartCoroutine("decrementFromTheDatabase", "doubleJump");
+			PlayerPrefs.SetInt("doublejump", (PlayerPrefs.GetInt("doublejump")-1));
+			//StartCoroutine("decrementFromTheDatabase", "doubleJump");
 		}
-		if (Input.GetKeyUp(KeyCode.W) && LoginDetails.barracade > 0 && GetComponent<Barracades>() == null)
+		if (Input.GetKeyUp(KeyCode.W) && PlayerPrefs.GetInt("barracades", 0) > 0  && GetComponent<Barracades>() == null)
 		{
 			gameObject.AddComponent<Barracades>();
-			LoginDetails.barracade--;
-			StartCoroutine("decrementFromTheDatabase", "barracade");
+			PlayerPrefs.SetInt("barracades", (PlayerPrefs.GetInt("barracades") - 1));
+			//StartCoroutine("decrementFromTheDatabase", "barracade");
 		}
-		if (Input.GetKeyUp(KeyCode.E) && LoginDetails.magnet > 0 && GetComponent<Magnet>() == null)
+		if (Input.GetKeyUp(KeyCode.E) && PlayerPrefs.GetInt("magnet", 0) > 0 && GetComponent<Magnet>() == null)
 		{
 			gameObject.AddComponent<Magnet>();
-			LoginDetails.magnet--;
-			StartCoroutine("decrementFromTheDatabase", "magnet");
+			PlayerPrefs.SetInt("magnet", (PlayerPrefs.GetInt("magnet") - 1));
+			//StartCoroutine("decrementFromTheDatabase", "magnet");
 		}
-		if (Input.GetKeyUp(KeyCode.R) && LoginDetails.invincibility > 0 && GetComponent<Invincibility>() == null)
+		if (Input.GetKeyUp(KeyCode.R) && PlayerPrefs.GetInt("invincibility", 0) > 0 && GetComponent<Invincibility>() == null)
 		{
 			gameObject.AddComponent<Invincibility>();
-			LoginDetails.invincibility--;
-			StartCoroutine("decrementFromTheDatabase", "invincibility");
+			PlayerPrefs.SetInt("invincibility", (PlayerPrefs.GetInt("invincibility") - 1));
+			//StartCoroutine("decrementFromTheDatabase", "invincibility");
 		}
-		if (Input.GetKeyUp(KeyCode.T) && LoginDetails.increasedCoinValue > 0 && GetComponent<increasedCoinValue>() == null)
+		if (Input.GetKeyUp(KeyCode.T) && PlayerPrefs.GetInt("increasedcoinvalue", 0) > 0 && GetComponent<increasedCoinValue>() == null)
 		{
 			gameObject.AddComponent<increasedCoinValue>();
-			LoginDetails.increasedCoinValue--;
-			StartCoroutine("decrementFromTheDatabase", "increasedCoinValue");
+			PlayerPrefs.SetInt("barracades", (PlayerPrefs.GetInt("increasedcoinvalue") - 1));
+			//StartCoroutine("decrementFromTheDatabase", "increasedCoinValue");
 		}
 		#endregion
 	}
@@ -281,38 +281,45 @@ public class PlayerController : MonoBehaviour
 		alive = false;
 		//Play sphere pop animation
 		GetComponent<TriangleExplosion>().explode();
-		//Send info to server
-		if (LoginDetails.email != "None")
+		//Save coins and highscore
+		PlayerPrefs.SetInt("balance", (PlayerPrefs.GetInt("balance", 0) + score));
+		if ((int)timeInGame > PlayerPrefs.GetInt("highscore", 0))
 		{
-			StartCoroutine("sendScoreInformation");
+			PlayerPrefs.SetInt("highscore", (int)timeInGame);
 		}
+		//Send info to server only for pc
+		//if (LoginDetails.email != "None")
+		//{
+		//	StartCoroutine("sendScoreInformation");
+		//}
 	}
 
-	IEnumerator sendScoreInformation()
-	{
-		WWWForm scoreForm = new WWWForm();
-		scoreForm.AddField("verif", LoginDetails.emailHash);
-		scoreForm.AddField("email", LoginDetails.email);
-		scoreForm.AddField("coins", score);
-		scoreForm.AddField("time", timeInGame.ToString());
-		WWW sendScoreForm = new WWW(scoreURL, scoreForm);
-		yield return sendScoreForm;
-		if (sendScoreForm.error != null)
-		{
-			Debug.LogError("Can't login: " + sendScoreForm.error);
-		}
-	}
+	//Only for pc
+	//IEnumerator sendScoreInformation()
+	//{
+	//	WWWForm scoreForm = new WWWForm();
+	//	scoreForm.AddField("verif", LoginDetails.emailHash);
+	//	scoreForm.AddField("email", LoginDetails.email);
+	//	scoreForm.AddField("coins", score);
+	//	scoreForm.AddField("time", timeInGame.ToString());
+	//	WWW sendScoreForm = new WWW(scoreURL, scoreForm);
+	//	yield return sendScoreForm;
+	//	if (sendScoreForm.error != null)
+	//	{
+	//		Debug.LogError("Can't login: " + sendScoreForm.error);
+	//	}
+	//}
 
-	IEnumerator decrementFromTheDatabase(string effect)
-	{
-		if (LoginDetails.email != "None")
-		{
-			WWWForm effectForm = new WWWForm();
-			effectForm.AddField("effect", effect);
-			effectForm.AddField("verif", LoginDetails.emailHash);
-			effectForm.AddField("email", LoginDetails.email);
-			WWW sendEffectForm = new WWW(effectURL, effectForm);
-			yield return sendEffectForm;
-		}
-	}
+	//IEnumerator decrementFromTheDatabase(string effect)
+	//{
+	//	if (LoginDetails.email != "None")
+	//	{
+	//		WWWForm effectForm = new WWWForm();
+	//		effectForm.AddField("effect", effect);
+	//		effectForm.AddField("verif", LoginDetails.emailHash);
+	//		effectForm.AddField("email", LoginDetails.email);
+	//		WWW sendEffectForm = new WWW(effectURL, effectForm);
+	//		yield return sendEffectForm;
+	//	}
+	//}
 }

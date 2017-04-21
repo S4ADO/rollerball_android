@@ -13,18 +13,9 @@ public class MainScreenNav : MonoBehaviour {
 			welcome = GameObject.Find("WelcomeUsername").GetComponent<Text>();
 			score = GameObject.Find("YourBalance").GetComponent<Text>();
 			balance = GameObject.Find("YourTopScore").GetComponent<Text>();
-			if (LoginDetails.email != "None")
-			{
-				welcome.text = "Welcome " + LoginDetails.username;
-				score.text = "Your Highscore: " + LoginDetails.highScore;
-				balance.text = "Your Balance: " + LoginDetails.money;
-			}
-			else
-			{
-				welcome.text = string.Empty;
-				score.text = string.Empty;
-				balance.text = string.Empty;
-			}
+			welcome.text = "Welcome";
+			score.text = "Your Highscore: " + PlayerPrefs.GetInt("highscore", 0);
+			balance.text = "Your Balance: " + PlayerPrefs.GetInt("balance", 0);
 		}
 	}
 
