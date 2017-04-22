@@ -8,7 +8,6 @@ public class SpikesControl : Obstacle
 
 	void Start()
 	{
-		base.Start();
 		delay = 3.0f;
 		curTime = Time.time;
 		isUp = true;
@@ -16,6 +15,7 @@ public class SpikesControl : Obstacle
 
 	void Update()
 	{
+		base.Update();
 		if (Time.time > curTime + delay)
 		{
 			foreach (GameObject spike in spikes)

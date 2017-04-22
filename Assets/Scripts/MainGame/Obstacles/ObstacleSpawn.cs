@@ -7,8 +7,8 @@ public class ObstacleSpawn : MonoBehaviour {
 	private GameObject obstacleInstance;
 	private GameObject player;
 	private int obstacleNo;
-
 	private Vector3 obstacleDist;
+	private Obstacle[] obstaclesInGame;
 
 	void Start()
 	{
@@ -22,16 +22,21 @@ public class ObstacleSpawn : MonoBehaviour {
 	{
 		while (player.GetComponent<PlayerController>().alive)
 		{
-			yield return new WaitForSeconds(Random.Range(2, 5));
+			yield return new WaitForSeconds(0.1f);
 			spawnRandObstacle();
 		}
 	}
 
 	void spawnRandObstacle()
 	{
-		Vector3 playerPosZ = new Vector3(Random.Range(-20, 20), 0, player.transform.position.z);
-		obstacleInstance = (GameObject)Instantiate(obstacles[obstacleNo], playerPosZ + obstacleDist, obstacles[obstacleNo].transform.rotation);
-		obstacleNo = Random.Range(0, obstacles.Length);
-		obstacleDist = new Vector3(0, 0, Random.Range(18.0f + player.GetComponent<Rigidbody>().velocity.z, 50.0f + player.GetComponent<Rigidbody>().velocity.z));
+		obstaclesInGame = FindObjectsOfType<Obstacle>();
+		if (obstaclesInGame.Length < 50)
+		{
+			Vector3 instPos = new Vector3(Random.Range(-20, 20), 0,
+				obstacleInstance == null ? player.transform.position.z : obstacleInstance.transform.position.z);
+			obstacleInstance = (GameObject)Instantiate(obstacles[obstacleNo], instPos + obstacleDist, obstacles[obstacleNo].transform.rotation);
+			obstacleNo = Random.Range(0, obstacles.Length);
+			obstacleDist = new Vector3(0, 0, Random.Range(18.0f, 40.0f));
+		}
 	}
 }

@@ -9,7 +9,5 @@ public class LoginDetails : MonoBehaviour {
 	{
 		DontDestroyOnLoad(this);
 		Screen.orientation = ScreenOrientation.Landscape;
-		if(PlayerPrefs.GetInt("balance", 0) < 10)
-			PlayerPrefs.SetInt("balance", 500000);
 	}
 }

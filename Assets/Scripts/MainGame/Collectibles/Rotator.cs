@@ -7,6 +7,8 @@ public class Rotator : MonoBehaviour
 	public bool isOriginal;
 	public bool touched = false;
 
+	private Transform playerTransform;
+
 	public void deactivate()
 	{
 		isActive = false;
@@ -15,19 +17,19 @@ public class Rotator : MonoBehaviour
 	void Start()
 	{
 		isActive = true;
-		Invoke("Destroy", 100.0f);
 	}
 
 	void Update()
 	{
 		transform.Rotate(new Vector3(45, 30, 15) * Time.deltaTime);
-	}
 
-	void Destroy()
-	{
 		if (!isOriginal)
 		{
-			Destroy(this.gameObject);
+			playerTransform = GameObject.Find("Player").GetComponent<Transform>();
+			if (transform.position.z + PlayerController.destDist < playerTransform.position.z)
+			{
+				Destroy(this.gameObject);
+			}
 		}
 	}
 }

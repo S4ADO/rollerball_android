@@ -30,6 +30,7 @@ public class Magnet : Effects {
 				coin.GetComponent<Rotator>().touched = true;
 			}
         }
+
 		foreach(Rotator coin in touchedCoins)
 		{
 			if (coin.touched)

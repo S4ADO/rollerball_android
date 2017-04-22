@@ -3,15 +3,7 @@ using System.Collections;
 
 public class Obstacle : MonoBehaviour {
 
-	protected void Start()
-	{
-		Invoke("DestroyThis", 75);
-	}
-
-	void DestroyThis()
-	{
-		Destroy(this.gameObject);
-	}
+	private Transform playerTransform;
 
 	protected void OnTriggerEnter(Collider player)
 	{
@@ -21,6 +13,15 @@ public class Obstacle : MonoBehaviour {
 			{
 				player.GetComponent<PlayerController>().die();
 			}
+		}
+	}
+
+	protected void Update()
+	{
+		playerTransform = GameObject.Find("Player").GetComponent<Transform>();
+		if (transform.position.z + PlayerController.destDist < playerTransform.position.z)
+		{
+			Destroy(this.gameObject);
 		}
 	}
 }

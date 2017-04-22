@@ -11,11 +11,12 @@ public class PlayerController : MonoBehaviour
 
 	public Rigidbody sphere;
 	private Vector3 movement;
+	public static float destDist = 100f;
 
-	public float speed;
 	public Text logText;
 	private int jumpNumber = 0;
 	private float leftAxis, rightAxis;
+	private float movementVelocity;
 
 	private float moveUp;
 
@@ -28,7 +29,6 @@ public class PlayerController : MonoBehaviour
 
 	public GameObject prefab;
 	private int timeDone = 0;
-	private float initialVelocity;
 	private float velocityDone = 0;
 	float curTime;
 	private Text scoreTimeText, invText, djText, brText, mgText, tcText;
@@ -54,7 +54,7 @@ public class PlayerController : MonoBehaviour
 		timeInGame = 0;
 		leftAxis = 0;
 		rightAxis = 0;
-		initialVelocity = 0.175f;
+		movementVelocity = 0.175f;
 		score = 0;
 		setScore();
 		pickUps = GameObject.FindObjectsOfType<Rotator>();
@@ -130,14 +130,14 @@ public class PlayerController : MonoBehaviour
 		}
 
 		//move automatically with time
-		float movementVelocity = ((int)timeInGame % 5 == 0 && (int)timeInGame != 0 && velocityDone != (int)timeInGame && initialVelocity < 15) ? initialVelocity + 0.01f : initialVelocity;
+		movementVelocity = ((int)timeInGame % 5 == 0 && (int)timeInGame != 0 && velocityDone != (int)timeInGame && movementVelocity < 40) ? movementVelocity + 0.5f : movementVelocity;
 		sphere.velocity = new Vector3(
 			Mathf.Clamp(sphere.velocity.x + (leftAxis + rightAxis), -17, 17),
 			sphere.velocity.y,
 			Mathf.Clamp(sphere.velocity.z + Input.GetAxis("Vertical"), -1f, 25) + movementVelocity
 		);
 		velocityDone = (int)timeInGame;
-		initialVelocity += 0.0005f;
+		movementVelocity += 0.0005f;
 		//could be used for obstacles
 		//float delay = 1.5f;
 		//float velocityDir = Random.Range(0, 360);
