@@ -266,7 +266,6 @@ public class PlayerController : MonoBehaviour
 		if (!Physics.Raycast(transform.position, Vector2.down, 0.5f))
 		{
 			sphere.AddForce(0, -800, 0);
-			jumpNumber++;
 		}
 	}
 
