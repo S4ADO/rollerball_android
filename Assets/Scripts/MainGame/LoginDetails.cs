@@ -8,6 +8,6 @@ public class LoginDetails : MonoBehaviour {
 	void Awake()
 	{
 		DontDestroyOnLoad(this);
-		Screen.orientation = ScreenOrientation.Landscape;
+		Screen.orientation = ScreenOrientation.LandscapeRight;
 	}
 }

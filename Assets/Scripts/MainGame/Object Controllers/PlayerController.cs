@@ -17,6 +17,7 @@ public class PlayerController : MonoBehaviour
 	private int jumpNumber = 0;
 	private float leftAxis, rightAxis;
 	private float movementVelocity;
+	private bool useButtons = true;
 
 	private float moveUp;
 
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
 
 	public bool alive = true;
 
+
 	float startTouchPosition = 0, endTouchPosition = 0;
 
 	void Awake()
@@ -45,6 +47,19 @@ public class PlayerController : MonoBehaviour
 
 	void Start()
 	{
+		if (PlayerPrefs.GetInt("movement") == 1)
+		{
+			useButtons = false;
+		}
+
+		if (!useButtons)
+		{
+			GameObject leftButton = GameObject.Find("LeftButton");
+			GameObject rightButton = GameObject.Find("RightButton");
+			leftButton.SetActive(false);
+			rightButton.SetActive(false);
+		}
+
 		scoreTimeText = GameObject.Find("ScoreTime").GetComponent<Text>();
 		invText = GameObject.Find("Invincibility").GetComponent<Text>();
 		djText = GameObject.Find("DoubleJump").GetComponent<Text>();
@@ -111,22 +126,30 @@ public class PlayerController : MonoBehaviour
 			timeInGame += 0.02f;
 		}
 
-		if (PlayerMovement.moveLeft)
+		if (useButtons)
 		{
-			leftAxis = leftAxis <= -1 ? -1 : leftAxis -= 0.02f;
-		}
-		else
-		{
-			leftAxis = 0;
-		}
+			if (PlayerMovement.moveLeft)
+			{
+				leftAxis = leftAxis <= -1 ? -1 : Input.acceleration.x;
+			}
+			else
+			{
+				leftAxis = 0;
+			}
 
-		if (PlayerMovement.moveRight)
-		{
-			rightAxis = rightAxis >= 1 ? 1 : rightAxis += 0.02f;
+			if (PlayerMovement.moveRight)
+			{
+				rightAxis = rightAxis >= 1 ? 1 : rightAxis += Input.acceleration.x;
+			}
+			else
+			{
+				rightAxis = 0;
+			}
 		}
 		else
 		{
-			rightAxis = 0;
+			leftAxis = leftAxis <= -1 ? -1 : leftAxis -= Input.acceleration.x;
+			rightAxis = rightAxis >= 1 ? 1 : rightAxis += 0.02f;
 		}
 
 		//move automatically with time

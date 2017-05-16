@@ -116,6 +116,7 @@
     <Compile Include="Assets\Scripts\Navigation\MainScreenNav.cs" />
     <Compile Include="Assets\Scripts\Navigation\NavigationDeath.cs" />
     <Compile Include="Assets\Scripts\Navigation\NavigationShop.cs" />
+    <Compile Include="Assets\Scripts\Navigation\SettingsNav.cs" />
     <Compile Include="Assets\Scripts\Navigation\ShowHideCanvas.cs" />
     <Compile Include="Assets\Scripts\Navigation\Spin.cs" />
     <Compile Include="Assets\Scripts\Networking\Login.cs" />

@@ -34,6 +34,11 @@ public class MainScreenNav : MonoBehaviour {
 		SceneManager.LoadScene("TopScores");
 	}
 
+	public void Settings()
+	{
+		SceneManager.LoadScene("Settings");
+	}
+
 	public void back()
 	{
 		SceneManager.LoadScene("MainScreen");

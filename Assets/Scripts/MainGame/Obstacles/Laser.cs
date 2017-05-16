@@ -22,7 +22,7 @@ public class Laser : Obstacle
 	{
 		if (goingForward)
 		{
-			GetComponent<Rigidbody>().velocity = new Vector3(0, 2, 2);
+			GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 2);
 			if (transform.position.z >= initialTransform.z + 5)
 			{
 				goingForward = false;
@@ -30,7 +30,7 @@ public class Laser : Obstacle
 		}
 		else
 		{
-			GetComponent<Rigidbody>().velocity = new Vector3(0, -2, -2);
+			GetComponent<Rigidbody>().velocity = new Vector3(0, 0, -2);
 			if (transform.position.z <= initialTransform.z - 5)
 			{
 				goingForward = true;
