@@ -5,9 +5,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rollerball-master-android.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rollerball-master-android.CSharp", "rollerball-master-android.CSharp.csproj", "{07007789-68A2-1EB1-C3B7-B4D238D7921A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rollerball-master-android.CSharp.Editor", "rollerball-master-android.CSharp.Editor.csproj", "{53FA211E-640E-87C2-83E4-3CFB87E41F31}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rollerball-master-android.CSharp.Editor.Plugins", "rollerball-master-android.CSharp.Editor.Plugins.csproj", "{C4F05A3D-7E77-4421-582F-532212C68730}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rollerball-master-android.CSharp.Editor", "rollerball-master-android.CSharp.Editor.csproj", "{53FA211E-640E-87C2-83E4-3CFB87E41F31}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,14 +23,14 @@ Global
 		{07007789-68A2-1EB1-C3B7-B4D238D7921A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07007789-68A2-1EB1-C3B7-B4D238D7921A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07007789-68A2-1EB1-C3B7-B4D238D7921A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{53FA211E-640E-87C2-83E4-3CFB87E41F31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{53FA211E-640E-87C2-83E4-3CFB87E41F31}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{53FA211E-640E-87C2-83E4-3CFB87E41F31}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{53FA211E-640E-87C2-83E4-3CFB87E41F31}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C4F05A3D-7E77-4421-582F-532212C68730}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C4F05A3D-7E77-4421-582F-532212C68730}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C4F05A3D-7E77-4421-582F-532212C68730}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C4F05A3D-7E77-4421-582F-532212C68730}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53FA211E-640E-87C2-83E4-3CFB87E41F31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53FA211E-640E-87C2-83E4-3CFB87E41F31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53FA211E-640E-87C2-83E4-3CFB87E41F31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53FA211E-640E-87C2-83E4-3CFB87E41F31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

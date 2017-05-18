@@ -130,7 +130,7 @@ public class PlayerController : MonoBehaviour
 		{
 			if (PlayerMovement.moveLeft)
 			{
-				leftAxis = leftAxis <= -1 ? -1 : Input.acceleration.x;
+				leftAxis = leftAxis <= -1 ? -1 : leftAxis -= 0.02f;
 			}
 			else
 			{
@@ -139,7 +139,7 @@ public class PlayerController : MonoBehaviour
 
 			if (PlayerMovement.moveRight)
 			{
-				rightAxis = rightAxis >= 1 ? 1 : rightAxis += Input.acceleration.x;
+				rightAxis = rightAxis >= 1 ? 1 : rightAxis += 0.02f;
 			}
 			else
 			{
@@ -148,8 +148,23 @@ public class PlayerController : MonoBehaviour
 		}
 		else
 		{
-			leftAxis = leftAxis <= -1 ? -1 : leftAxis -= Input.acceleration.x;
-			rightAxis = rightAxis >= 1 ? 1 : rightAxis += 0.02f;
+			if (Input.acceleration.x < 0)
+			{
+				leftAxis = leftAxis <= -1 ? -1 : leftAxis += Input.acceleration.x/5;
+			}
+			else
+			{
+				leftAxis = 0;
+			}
+
+			if (Input.acceleration.x > 0)
+			{
+				rightAxis = rightAxis >= 1 ? 1 : rightAxis += Input.acceleration.x/5;
+			}
+			else
+			{
+				rightAxis = 0;
+			}
 		}
 
 		//move automatically with time

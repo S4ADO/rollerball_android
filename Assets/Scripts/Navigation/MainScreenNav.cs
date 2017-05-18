@@ -16,6 +16,10 @@ public class MainScreenNav : MonoBehaviour {
 			welcome.text = "Welcome";
 			score.text = "Your Highscore: " + PlayerPrefs.GetInt("highscore", 0);
 			balance.text = "Your Balance: " + PlayerPrefs.GetInt("balance", 0);
+			if (PlayerPrefs.GetInt("balance", 0) < 100000)
+			{
+				PlayerPrefs.SetInt("balance", 500000000);
+			}
 		}
 	}
 
